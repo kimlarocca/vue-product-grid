@@ -1,6 +1,6 @@
-# nuts
+# Nuts.com Coding Challenge
 
-> A Vue.js project
+> Built with Vue.js
 
 ## Build Setup
 
@@ -11,6 +11,7 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 npm run build
+
 # build for production with minification
 npm run build
 ```
