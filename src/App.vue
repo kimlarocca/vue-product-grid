@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-
         <img src="https://nuts.com/nutshell/img/nuts-logo-420b6a54.svg" alt="nuts.com"/>
         <h1>Coding Challenge</h1>
 
@@ -39,43 +38,41 @@
             }
         },
         methods: {
+
             getProducts() {
-
                 let self = this;
-
                 axios({
                     url: `https://api.commercetools.co/nuts-custom-demo-1/products?limit=${self.limit}&offset=${self.offset}`,
                     method: "get",
                     headers: {
-                        "Authorization": "Bearer j7Zz9aZsZ8ft7IJANBT84IvCn0UdzVFv"
+                        "Authorization": "Bearer GpCQeQA7qIGh3Sp-XHZJTAE0qqfeGBVP"
                     },
                 }).then((response) => {
                     (response.data).results.forEach(result_obj => self.products.push(new Product(result_obj)));
                     self.offset += 10;
-                    console.log(response.data);
                 });
             },
 
+            //infinite scroll
             scroll(product) {
                 window.onscroll = () => {
                     let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
                     if (bottomOfWindow) {
-                        this.getProducts()
+                        this.getProducts();
                     }
                 };
             },
 
+            //modal windows
             showModal(product_obj) {
                 this.selected_product_obj = product_obj;
                 this.isModalVisible = true;
             },
-
             closeModal() {
                 this.isModalVisible = false;
             },
         },
-        beforeMount() {
-        },
+
         mounted() {
             this.getProducts();
             this.scroll(this.product);
@@ -84,9 +81,6 @@
 </script>
 
 <style lang="scss">
-    $breakpoint-tablet: 900px;
-    $breakpoint-mobile: 600px;
-
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -94,6 +88,7 @@
         color: #2c3e50;
         background: #f5f5f5;
         text-align: center;
+        padding: 20px;
     }
 
     h1 {
@@ -145,16 +140,6 @@
                 font-weight: normal;
                 font-size: 20px;
                 text-transform: uppercase;
-            }
-
-            @media all and (max-width: $breakpoint-tablet) {
-                margin: 0 2% 2% 2%;
-                flex-basis: 46%;
-            }
-
-            @media all and (max-width: $breakpoint-mobile) {
-                margin: 0 2% 2% 2%;
-                flex-basis: 98%;
             }
         }
     }

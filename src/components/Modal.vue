@@ -2,9 +2,10 @@
     <transition name="modal-fade">
         <div class="modal-background">
             <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-                <button type="button" class="btn-close" @click="close" aria-label="Close modal">X</button>
+                <button type="button" class="close" @click="close" aria-label="Close modal">X</button>
                 <img :src="product_obj.image_url" :alt="product_obj.name"/>
-                <span v-if="product_obj.badge" class="badge"><img src="https://1b0bbb9e89b4713adcc7-aea4cee2cb18344b328e3a03eff3ec4f.ssl.cf1.rackcdn.com/5e85d71501308335-L2AE6hCf-thumb.jpg"/></span>
+                <span v-if="product_obj.badge" class="badge"><img
+                        src="https://1b0bbb9e89b4713adcc7-aea4cee2cb18344b328e3a03eff3ec4f.ssl.cf1.rackcdn.com/5e85d71501308335-L2AE6hCf-thumb.jpg"/></span>
                 <div class="details">
                     <h1> {{ product_obj.name }} </h1>
                     <p class="price">${{ product_obj.price }}</p>
@@ -33,22 +34,13 @@
 </script>
 
 <style lang="scss">
-    .fade-enter {
-        transition: all .3s ease;
-        opacity: 100%;
-    }
-
-    .fade-enter {
-        opacity: 0;
-    }
-
     .modal-background {
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.75);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -72,7 +64,7 @@
                 left: 20px;
             }
 
-            .btn-close {
+            .close {
                 position: absolute;
                 top: 10px;
                 right: 20px;
@@ -105,6 +97,7 @@
                 position: relative;
                 background: #f5f5f5;
                 margin-top: 30px;
+
                 &:before {
                     content: '';
                     position: absolute;

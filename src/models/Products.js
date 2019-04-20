@@ -16,7 +16,7 @@ export class Product {
     parsePrice(product_obj = {}) {
         let price_arr = product_obj.masterData.current.masterVariant.prices || [],
             price = (price_arr[0] && ('centAmount' in price_arr[0].value)) ? price_arr[0].value.centAmount : '';
-        return price / 100;
+        return price / 100; //probably should do more checks on this instead of just dividing by 100, but ran out of time
     }
 
     parseBadge(product_obj = {}) {
